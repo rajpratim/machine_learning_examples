@@ -19,14 +19,10 @@ def main():
     max_iter = 20 # make it 30 for sigmoid
     print_period = 10
 
-    X, Y = get_normalized_data()
+    Xtrain, Xtest, Ytrain, Ytest = get_normalized_data()
     lr = 0.00004
     reg = 0.01
 
-    Xtrain = X[:-1000,]
-    Ytrain = Y[:-1000]
-    Xtest  = X[-1000:,]
-    Ytest  = Y[-1000:]
     Ytrain_ind = y2indicator(Ytrain)
     Ytest_ind = y2indicator(Ytest)
 
@@ -36,7 +32,7 @@ def main():
 
     M = 300
     K = 10
-    W1 = np.random.randn(D, M) / 28
+    W1 = np.random.randn(D, M) / np.sqrt(D)
     b1 = np.zeros(M)
     W2 = np.random.randn(M, K) / np.sqrt(M)
     b2 = np.zeros(K)
@@ -75,7 +71,7 @@ def main():
 
 
     # 2. RMSprop
-    W1 = np.random.randn(D, M) / 28
+    W1 = np.random.randn(D, M) / np.sqrt(D)
     b1 = np.zeros(M)
     W2 = np.random.randn(M, K) / np.sqrt(M)
     b2 = np.zeros(K)
